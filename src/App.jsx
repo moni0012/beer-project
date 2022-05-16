@@ -14,8 +14,9 @@ const App = () => {
   return (
     <div className="app">
       <div className="beer-container">
-        Hello
         <div>
+          {" "}
+          Hello World
           <Navigation
             label={"beer"}
             searchText={searchText}
