@@ -1,0 +1,16 @@
+.navigation {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 3%;
+  height: 90%;
+}
+
+.filterList {
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}

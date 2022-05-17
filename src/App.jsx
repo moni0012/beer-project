@@ -2,29 +2,35 @@ import { useState } from "react";
 import "./App.css";
 import Display from "./components/Display/Display.jsx";
 import Navigation from "./components/Navigation/Navigation.jsx";
-import Search from "./components/Search/Search";
 
 import beer from "./data/beer";
 
 const App = () => {
-  const [searchText, setsearchText] = useState();
-  const handleInput = () => {
-    console.log("handle Input used");
+  const [beers, setBeers] = useState([]);
+  const [searchText, setSearchText] = useState("");
+  const handleInput = (event) => {
+    setSearchText(event.target.value);
   };
+  const filteredBeers = beer.filter((beer) => {
+    const beersLower = beer.name.toLowerCase();
+    const searchTextLower = searchText.toLocaleLowerCase();
+
+    if (beersLower.includes(searchTextLower)) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+
   return (
-    <div className="app">
-      <div className="beer-container">
-        <div>
-          {" "}
-          Hello World
-          <Navigation
-            label={"beer"}
-            searchText={searchText}
-            handleInput={handleInput}
-          />
-        </div>
-        <Display />
-      </div>
+    <div className="container">
+      <p>{searchText}</p>
+      <Navigation
+        searchText={searchText}
+        setBeers={setBeers}
+        handleInput={handleInput}
+      />
+      {beers && <Display beers={filteredBeers} />}
     </div>
   );
 };

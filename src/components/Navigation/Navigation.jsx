@@ -1,23 +1,32 @@
 import React from "react";
 import "./Navigation.scss";
+import Search from "../Search/Search";
 
-const Navigation = ({ label, searchText, handleInput }) => {
-  const capitalizedLabel = label[0].toUpperCase() + label.slice(1);
-
+const Navigation = (props) => {
+  const { handleInput, setBeers, searchText } = props;
   return (
-    <form className="search-box">
-      <label htmlFor={label} className="search-box__label">
-        {capitalizedLabel}
-      </label>
-      {/* {HAVE THE WHOLE SEARCH TERM RATHER THAN THE SINGLE LETTER} */}
-      <input
-        type="text"
-        name={label}
-        value={searchText}
-        onInput={handleInput}
-        className="search-box__input"
+    <div className="navigation">
+      <Search
+        searchText={searchText}
+        handleInput={handleInput}
+        setBeers={setBeers}
       />
-    </form>
+      <div className="filterList">
+        <label>
+          High ABV ({">"} 6.0%)
+          <input type="checkbox" />
+          <br />
+        </label>
+        <label>
+          Classic Range
+          <input type="checkbox" /> <br />
+        </label>
+        <label>
+          Acidic (pH {"<"} 4)
+          <input type="checkbox" />
+        </label>
+      </div>
+    </div>
   );
 };
 
