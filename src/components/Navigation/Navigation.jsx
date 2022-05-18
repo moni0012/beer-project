@@ -3,7 +3,14 @@ import "./Navigation.scss";
 import Search from "../Search/Search";
 
 const Navigation = (props) => {
-  const { handleInput, setBeers, searchText } = props;
+  const {
+    handleInput,
+    setBeers,
+    searchText,
+    handlePHvalue,
+    handleAbvValue,
+    handleFirstBrewed,
+  } = props;
   return (
     <div className="navigation">
       <Search
@@ -14,16 +21,16 @@ const Navigation = (props) => {
       <div className="filterList">
         <label>
           High ABV ({">"} 6.0%)
-          <input type="checkbox" />
+          <input type="checkbox" onClick={handleAbvValue} />
           <br />
         </label>
         <label>
           Classic Range
-          <input type="checkbox" /> <br />
+          <input type="checkbox" onClick={handleFirstBrewed} /> <br />
         </label>
         <label>
           Acidic (pH {"<"} 4)
-          <input type="checkbox" />
+          <input type="checkbox" onClick={handlePHvalue} />
         </label>
       </div>
     </div>

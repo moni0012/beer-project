@@ -1,4 +1,4 @@
-//import React, { useState } from "react";
+import React, { useState } from "react";
 import "./Display.scss";
 
 const Display = (props) => {
@@ -21,5 +21,4 @@ const Display = (props) => {
     </div>
   );
 };
-
 export default Display;
